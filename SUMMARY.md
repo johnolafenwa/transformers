@@ -9,6 +9,7 @@
 
 ## Paradigms of Deep Learning Research
 
+* [Introduction](paradigms-of-deep-learning-research/introduction.md)
 * [Perceptron Based Feedforward Models](paradigms-of-deep-learning-research/perceptron-based-feedforward-models.md)
 * [Recurrent Neural Networks](paradigms-of-deep-learning-research/recurrent-neural-networks.md)
 * [Convolutional Neural Networks](paradigms-of-deep-learning-research/convolutional-neural-networks.md)
