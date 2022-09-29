@@ -1,4 +1,4 @@
-# Introduction
+# How Transformers Work
 
 With a bit on introduction and history out of the way, we shall focus the rest of this book exclusively on explaining the different types of transformer models, how the transformer architecture works and their applications to natural language processing, computer vision, speech and a couple of other problems we solve with deep learning. In order to understand well enough how transformers work, a basic understanding of NLP is very helpful, hence, in the next couple of chapters we shall touch a bit on NLP topics such as text tokenization.
 
