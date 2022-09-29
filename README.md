@@ -39,28 +39,3 @@ My hope is, by the end of this treatise, the reader would have solid understandi
 
 &#x20;
 
-## Quick links
-
-{% content-ref url="contents/table-of-contents.md" %}
-[table-of-contents.md](contents/table-of-contents.md)
-{% endcontent-ref %}
-
-{% content-ref url="contents/notation.md" %}
-[notation.md](contents/notation.md)
-{% endcontent-ref %}
-
-## Get Started
-
-We've put together some helpful guides for you to get setup with our product quickly and easily.
-
-{% content-ref url="how-transformers-work/introduction.md" %}
-[introduction.md](how-transformers-work/introduction.md)
-{% endcontent-ref %}
-
-{% content-ref url="how-transformers-work/transformer-encoder.md" %}
-[transformer-encoder.md](how-transformers-work/transformer-encoder.md)
-{% endcontent-ref %}
-
-{% content-ref url="how-transformers-work/transformer-decoder.md" %}
-[transformer-decoder.md](how-transformers-work/transformer-decoder.md)
-{% endcontent-ref %}
