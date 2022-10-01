@@ -126,9 +126,9 @@ After we are done with all our embedding activities, we pass the transformed tok
 
 <figure><img src="../.gitbook/assets/self attention block.png" alt=""><figcaption><p>Figure 6</p></figcaption></figure>
 
-The block shown below is repeated N times as depicted, all of them being identical but without sharing parameters.
+The block shown above is repeated N times as depicted, all of them being identical but without sharing parameters.
 
-First, all the token vectors are passed to the self attention module, as we have earlier explained, this module would compute the outputs of each token as a function of the tokens value as well as the value of the other tokens, however, the contribution of each of the tokens is scaled according to an attention score which would be high for the tokens most important for modelling the current token while the less important ones would have low attention scores. Shortly, we shall speak in more detail about the attention module. As you can note from above, this is the point at which the tokens interact with each other, and compute outputs not just based on their own values but as a weighted sum of the values of the other tokens.
+First, all the token vectors are passed to the self-attention module, as we have earlier explained, this module would compute the outputs of each token as a function of the tokens value as well as the value of the other tokens, however, the contribution of each of the tokens is scaled according to an attention score which would be high for the tokens most important for modelling the current token while the less important ones would have low attention scores. Shortly, we shall speak in more detail about the attention module. As you can note from above, this is the point at which the tokens interact with each other, and compute outputs not just based on their own values but as a weighted sum of the values of the other tokens.
 
 Given each token i, this can be formulated as $$y_i = f(x_i \ | \ x_0, \ ..... \ ,x_{n-1};\theta)$$​
 
@@ -165,6 +165,8 @@ The problem with the above is, all the values from the tokens have equal weight,
 <figure><img src="../.gitbook/assets/weighted_combine.png" alt=""><figcaption><p>Figure 10</p></figcaption></figure>
 
 The idea here is very simple, the bit of complexity is in how the attention weights are computed.
+
+
 
 &#x20;
 
