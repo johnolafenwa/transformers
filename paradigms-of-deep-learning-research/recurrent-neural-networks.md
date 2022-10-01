@@ -44,10 +44,3 @@ The second problem is that their computation is sequential since each step in th
 
 \[ii] Cho, Kyunghyun; van Merrienboer, Bart; Bahdanau, DZmitry; Bengio, Yoshua (2014). "On the Properties of Neural Machine Translation: Encoder-Decoder Approaches". arXiv:1409.1259.
 
-&#x20;
-
-***
-
-&#x20;\[JO1]Insert full meaning of the term
-
-&#x20;\[JO2]Insert full meaning of the term

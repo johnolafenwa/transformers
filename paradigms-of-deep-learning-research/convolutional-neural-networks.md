@@ -51,8 +51,3 @@ Some of the advantages of CNNs are their parallel nature, computation efficiency
 
 \[ii] Convolutional Sequence to Sequence Learning [https://arxiv.org/abs/1705.03122](https://arxiv.org/abs/1705.03122)
 
-&#x20;
-
-***
-
-&#x20;\[JO1]Insert full meaning of term.

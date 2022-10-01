@@ -38,9 +38,3 @@ If the above isn’t super clear, don’t worry, we shall explain how transforme
 \[i] Attention Is All You Need https://arxiv.org/abs/1706.03762
 
 \[ii] Reed, Scott; Zolna, Konrad; Parisotto, Emilio; Sergio Gomez Colmenarejo; Novikov, Alexander; Barth-Maron, Gabriel; Gimenez, Mai; Sulsky, Yury; Kay, Jackie; Jost Tobias Springenberg; Eccles, Tom; Bruce, Jake; Razavi, Ali; Edwards, Ashley; Heess, Nicolas; Chen, Yutian; Hadsell, Raia; Vinyals, Oriol; Bordbar, Mahyar; de Freitas, Nando (12 May 2022). "A Generalist Agent". arXiv:2205.06175 \[cs.AI].
-
-***
-
-&#x20;\[JO1]Insert diagram to explain these
-
-&#x20;\[JO2]Recurrent Neural Networks: Add full meaning
