@@ -146,9 +146,25 @@ This block is repeated N times, with the output from the previous block being pa
 
 The output from the last self attention block is passed to the final linear layer. In this layer, all the values from all the tokens are passed into a single linear layer, hence, the values gets mixed up in a fully connected fashion. This layer would make the final prediction, which in this case is simply to output the classification scores.
 
-&#x20;
+## &#x20;Attention in Transformer Encoder
 
-&#x20;
+The self attention layer is the perhaps the most important part of the transformer model. To understand what happens here, let us consider first, the input and output. The input as explained earlier is an array of token vectors, each of shape $$R^M$$. Collectively, the input is a matrix $$R^{NM}$$ representing N tokens.
+
+The self attention layer transforms the input to an output of shape $$R^{NV}$$, projecting each token from$$R^M \to R^V$$.
+
+This can be seen as depicted in Figure 8 below.
+
+<figure><img src="../.gitbook/assets/transforms.png" alt=""><figcaption><p>Figure 8</p></figcaption></figure>
+
+&#x20;Recall, in the self attention layer, we are trying to model the dependencies between the tokens, hence, each ![](file:///C:/Users/joolafen/AppData/Local/Temp/msohtmlclip1/01/clip\_image002.png) would be constructed from a function that combines the current token with all the other tokens, naively, this can be done as a sum of all the projections from each token as depicted in Figure 9 below.
+
+<figure><img src="../.gitbook/assets/naive_combine.png" alt=""><figcaption><p>Figure 9</p></figcaption></figure>
+
+The problem with the above is, all the values from the tokens have equal weight, what we want is, for each current token, we need its output to be a weighted sum of the token and all the other tokens (also called context tokens). Figure 10 below illustrates the weighted version of the above formulation, where for each current token being considered, we have a set of weights $$w_0 \ ... \ w_{n-1}$$called attention weights, that represents how much each of the context tokens contributes to the final output value of the token being processed.
+
+<figure><img src="../.gitbook/assets/weighted_combine.png" alt=""><figcaption><p>Figure 10</p></figcaption></figure>
+
+The idea here is very simple, the bit of complexity is in how the attention weights are computed.
 
 &#x20;
 
