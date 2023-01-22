@@ -145,7 +145,7 @@ Some of the advantages of CNNs are their parallel nature, computational efficien
 
 ## Transformer Models
 
-Until 2017, the three paradigms as highlighted above were Feedforward Networks which were used for very simple modelling tasks and as components of both convolutional neural networks and recurrent neural networks. And as earlier mentioned, convolutional neural networks were used primarily for computer vision and recurrent neural networks primarily for text and speech sequence modelling. All deep learning methods were based on these three paradigms.
+Until 2017, the three paradigms as highlighted above were the dominant class of deep learning models used for everything AI from images to text and speech. Convolutional neural networks were used primarily for computer vision, recurrent neural networks primarily for text and speech sequence modelling while feedforward models were either used for basic regression problems or as components of CNNs and RNNs.&#x20;
 
 In 2017, Vaswani et al published the ground-breaking paper, “_Attention is all You Need”_ , that brought the 4th paradigm of deep learning architectures.
 
