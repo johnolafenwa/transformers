@@ -147,36 +147,15 @@ Some of the advantages of CNNs are their parallel nature, computational efficien
 
 Until 2017, the three paradigms as highlighted above were the dominant class of deep learning models used for everything AI from images to text and speech. Convolutional neural networks were used primarily for computer vision, recurrent neural networks primarily for text and speech sequence modelling while feedforward models were either used for basic regression problems or as components of CNNs and RNNs.&#x20;
 
-In 2017, Vaswani et al published the ground-breaking paper, “_Attention is all You Need”_ , that brought the 4th paradigm of deep learning architectures.
+In 2017, Vaswani et al published the ground-breaking paper titled, “_Attention is all You Need”_ , that brought the 4th paradigm of deep learning architectures.
 
-These new models were called transformers and have since evolved in different ways achieving state of the art results on nearly every\
-&#x20;task across computer vision, natural language processing, speech processing, and reinforcement learning. Beyond achieving SOTA results across these tasks, they have opened new frontiers in our ability to scale deep learning models, build single models that can perform multiple tasks\[ii] and achieve results that were previously impossible. Therefore, we shall spend the rest of this book learning what transformers are, how they work, and how to train and deploy them.
+These new models were called transformers and have since evolved in different ways achieving state of the art results on nearly every task across computer vision, natural language processing, speech processing, and reinforcement learning. Beyond achieving SOTA results across these tasks, they have opened new frontiers in our ability to scale deep learning models, build single models that can perform multiple tasks and achieve results that were previously impossible. Therefore, we shall spend the rest of this book learning what transformers are, how they work, and how to train and deploy them.
 
-At their core, transformers are made up of three major components, standard linear modules, a positional encoder module and the Attention modules that model the dependency between each position in a sequence and all other dependencies in the sequence in a parallel fashion without needing to maintain a hidden state. More importantly, for each input, it can learn how important each of the other inputs are to model it. For example, in order to predict the next word in the sequence “_I am coming home to watch the evening match”_ given the input “_I am coming home to watch the evening”,_ the attention module enables the module to learn that value of the word “_watch”_ should be given more importance in order to predict the target word _“match”_ more than the word _“the”._ This is an arbitrary example that illustrates just how the attention module learns which inputs are useful and related to performing a task.
+At their core, transformers are made up of three major components, standard linear layers, a positional encoder layer and the Attention modules that model the dependency between each word in a sequence and all other words in the sequence in a parallel fashion without needing to maintain a hidden state.
 
-In simple terms, the attention module helps the model learn to focus.
+Before diving into the details of this really means, lets consider the type of problems we are trying to solve in natural language processing. Typical NLP tasks including translating a sentence from one language to another (e.g english to swahili), classifying the sentiment of a tweet, summarizing a sentence, predicting the parts of speech of words in a sentence or maybe doing named entity recognition (e.g which words refers to entities like people or organizations). In all of this, two things are really important;&#x20;
 
-As humans, we do this all the time. For instance, when I go into the kitchen to prepare tea, I would likely pay more attention to the part of the kitchen where the kettle is located as compared to the part of the kitchen where the fridge is located. Such focus helps us to solve problems efficiently, enabling us to focus less on parts of our environments that are not immediately useful to what we are doing at a point in time, albeit without completely disregarding the other aspects of our environment, helping us to use information from them as necessary. This simple concept is what the authors of the transformer paper used to lay the foundation for the next evolution of deep learning research.
-
-Unlike RNNs , transformer models do not have the forgetting problem.
-
-The formulation of transformer models can be represented by the equation for autoregressive models
-
-$$
-y_i = f(x_i \ | \ x_0, \ ..... \ ,x_{i-1};\theta)
-$$
-
-Furthermore, in non-casual settings (e.g sequence classification), each data point can depend not only on the past but can also depend on future data points, giving rise to the following equation:
-
-$$
-y_i = f(x_i \ | \ x_0, \ ..... \ ,x_{n-1};\theta)
-$$
-
-If the above isn’t super clear, don’t worry, we shall explain how transformers works in clearer detail in the next chapter with emphasis on the structure of the architecture and the attention module.
-
-
-
-
+First, the position of words relative to each other matters absolutely. For example, the sequence, "Have you eaten the food" is a question, however "The food you have eaten" is a noun phrase. These two sequences are composed with the exact same words but the difference in their meaning is entirely derived on the position of the words. Changing the order of words in any sentence often changes is meaning. Recurrent neural networks deals with this by using a loop to process words position by position and passing a hidden state from the previous positions to the next. Transformers solve this by explicitly encoding the position of each word in the sentence as a vector. In this sense, transformers not only learn the value of a word but conditions that value on what position in the sentence the word occured. One key advantage of this over the recurrent approach is that the position of every word in the sequence can be encoded in parallel rather than sequentially.
 
 
 
