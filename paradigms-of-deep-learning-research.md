@@ -78,7 +78,7 @@ for word in input_data:
     output, hidden_state = rnn(word, hidden_state)
     
 print(output)
-// this should output "tommorow"
+# this should output "tommorow"
 ```
 {% endcode %}
 
@@ -100,7 +100,9 @@ The second problem is that their computation is sequential since each step in th
 
 ## Convolutional Neural Networks
 
-Convolutional Neural Networks(CNN) were invented by Yann LeCun in the late 1990s, just around the same time as the LSTM. They are a class of neural network models designed to model the grid-like structure of images by learning image kernels applied on image data in a sliding window fashion.
+<figure><img src=".gitbook/assets/ezgif-frame-013.jpg" alt=""><figcaption><p>Yann Lecun demonstrated image recognition with Convolutional Neural Networks in 1989</p></figcaption></figure>
+
+Convolutional Neural Networks(CNN) were invented by Yann LeCun in the late 1980s. They are a class of neural network models designed to model the grid-like structure of images by learning image kernels applied on image data in a sliding window fashion.
 
 CNN models became the bedrock of computer vision and is still very much in vogue. They have since been largely applied to model speech and text as well.
 
