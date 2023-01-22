@@ -1,6 +1,6 @@
 # Deep Learning with Transformers
 
-<figure><img src="https://lh3.googleusercontent.com/y1mJapJxVF7MbozonPMzKR_hF3m3sTc0-pKWt5Qb_4oFLoepReHFv6tSdrzaVgNNm8ktE47J9HCvcFCWUXP4BHN4jVcjEBPpKLRusPZKaJ2QchM1QXUKj3ixvfaXH437co-aEHudYjPE3kjtZlUQMUCSc4v4Cubn2KqsLORKdjDqol5pLttZLjLPDfRluA" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/A1.jpg" alt=""><figcaption></figcaption></figure>
 
 ## PREFACE
 
