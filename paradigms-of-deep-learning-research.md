@@ -1,10 +1,10 @@
 # Paradigms of Deep Learning Research
 
-The quest to build intelligent computer systemshas led to the discovery of different techniques for learning from human experiences and passing our knowledge to machines in ways that help them mimic our abilities and perform tasks that were previously impossible. The early days of computing saw the rise of hand-crafted algorithms and classical machine learning techniques such as decision trees and probabilistic models with roots in Bayesian inference. These models worked well on low dimensional data, quickly gaining roots in financial analysis, predictive modelling with tabular and time series data, and other related aspects. However, these methods could not unlock the ability of computers to see, read, hear and speak like humans. Deep Neural Networks unlocked these more advanced capabilities allowing us to create new intelligent systems that have become a normal part of our lives today. Fuelled by the abundance of big data and the rapid rise in the compute capability of modern GPUs, the rate of development of the field of deep neural networks has become impossible for anyone to keep pace with. New ground-breaking papers and immeasurable number of applications of them across the world have become normal.
+The quest to build intelligent computer systems has led to the discovery of different techniques for learning from human experiences and passing our knowledge to machines in ways that help them mimic our abilities and perform tasks that were previously impossible. The early days of computing saw the rise of hand-crafted algorithms and classical machine learning techniques such as decision trees and probabilistic models with roots in Bayesian inference. These models worked well on low dimensional data, quickly gaining roots in financial analysis, predictive modelling with tabular and time series data, and other related aspects. However, these methods could not unlock the ability of computers to see, read, hear and speak like humans. Deep Neural Networks unlocked these more advanced capabilities allowing us to create new intelligent systems that have become a normal part of our lives today. Fueled by the abundance of big data and the rapid rise in the compute capability of modern GPUs, the rate of development of the field of deep neural networks has become impossible for anyone to keep pace with. New ground-breaking papers and immeasurable number of applications of them across the world have become normal.
 
 However, despite the large number of techniques, as of today, there are four paradigms of deep learning models under which nearly every new technique falls under. These are;
 
-\-          Feedforward Neural Networks
+\-          Feedforward Models
 
 \-          Recurrent Neural Networks
 
@@ -44,27 +44,47 @@ When applied to simple problems, this model worked great, however, they often ov
 
 ## Recurrent Neural Networks
 
-Recurrent Neural Networks (RNNs) popularized by the LSTM (Long Short Term Memory) and GRU  (Gated Recurrent Units) variants, developed into a major success. Establishing itself as one of the core paradigms of deep learning research. This class of models contained hidden states that enabled them keep track of long-term dependencies in sequences of inputs. Therefore, they worked well on sequence tasks such as speech and natural language processing. The way they work is to model the relationship between the input and output as
+<figure><img src=".gitbook/assets/rnn.png" alt=""><figcaption><p>Graphical Illustration of a RNN model</p></figcaption></figure>
+
+Recurrent Neural Networks (RNNs) popularized by the LSTM (Long Short Term Memory) and GRU  (Gated Recurrent Units) variants, developed into a major success. Establishing itself as one of the core paradigms of deep learning research. This class of models contained hidden states that enabled them keep track of long-term dependencies in sequences of inputs. Therefore, they worked well on sequence tasks such as speech and natural language processing.&#x20;
+
+In a RNN, to predict the output **"tomorrow"** from the words **"I am coming  home".** We would do the following:
+
+1\. Feed the first word $$x_0$$ to the  model (e.g "I")
+
+2\. Model returns the next predicted word and first hidden state $$h_0$$​
+
+3\. Feed the second word $$x_1$$ (e.g "am" ) and the first hidden state $$h_0$$ to the model
+
+4\. Model returns the next word and the next hidden state $$h_1$$
+
+5\. Repeat until the last word $$x_{n-1}$$ to get the prediction **"tomorrow"**
+
+****
+
+If this confuses you, here is the process written in python code
+
+{% code overflow="wrap" lineNumbers="true" %}
+```python
+input_data = ["I", "am", "coming", "home"]
+
+# initial hidden state is None
+hidden_state = None
+
+# loop over each word and compute a new hidden state and output
+for word in input_data:
+    output, hidden_state = rnn(word, hidden_state)
+    
+print(output)
+// this should output "tommorow"
+```
+{% endcode %}
+
+Mathematically, this can be represented with the equation below.
 
 $$
 y_i,h_i = f(x_ih_{i-1})
 $$
-
-In simple terms, this means:
-
-1\.    Feed an input $$x_0$$ into the model
-
-2\.    Model returns outputs $$y_0$$and hidden state $$h_0$$​
-
-3\.     For the next prediction, feed the model input $$x_1$$ and previous hidden state  $$h_0$$
-
-
-
-Figure 2 below is a simplified illustration on a RNN, depicting a task of predicting the next word (“tomorrow”) from a history of past words (“I am coming home”)
-
-
-
-<figure><img src=".gitbook/assets/rnn.png" alt=""><figcaption><p>Figure 2</p></figcaption></figure>
 
 In many ways, they are an extension of the standard feedforward neural networks as the components are made up of standard perceptron modules applied at each time step. The new components are hidden states that help to remember or forget information from the past. While this model worked well, it still had a major flaw, which I shall explain with the example below.
 
@@ -80,11 +100,9 @@ The second problem is that their computation is sequential since each step in th
 
 Convolutional Neural Networks(CNN) were invented by Yann LeCun in the late 1990s, just around the same time as the LSTM. They are a class of neural network models designed to model the grid-like structure of images by learning image kernels applied on image data in a sliding window fashion.
 
-CNN models became the bedrock of computer vision and still rule till date. They have since been largely applied to model speech and text as well.
+CNN models became the bedrock of computer vision and is still very much in vogue. They have since been largely applied to model speech and text as well.
 
-&#x20;While they are often applied in a single-shot fashion to model images
-
-frame-by-frame, different formulations such as causal convolutions allow modelling sequences such as text and speech in an auto-regressive manner. Besides being the de-facto model for image modelling, image generation, and video understanding they have been successfully applied to language translation as well.
+&#x20;While they are often applied in a single-shot fashion to model images frame-by-frame, different formulations such as causal convolutions allow modelling sequences such as text and speech in an auto-regressive manner. Besides being the de-facto model for image modelling, image generation, and video understanding they have been successfully applied to language translation as well.
 
 In Figure 3 below, we show a basic CNN model that takes in the image of a cat and via a couple of convolution layers and a linear layer with softmax, is able to classify if the image is that of a cat.
 
@@ -118,7 +136,7 @@ Note that, while the output above is also a 2 \* 2 grid of numbers, the size of 
 
 In practice, all the steps above would be done in parallel and multiple filters would be used. But the above simple example, shows at its core, how cnn models apply filters learned from real data to model images,
 
-Some of the advantages of CNNs are their parallel nature, computation efficiency and simplicity.\
+Some of the advantages of CNNs are their parallel nature, computational efficiency and simplicity.\
 
 
 ## Transformer Models
