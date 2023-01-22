@@ -14,7 +14,9 @@ However, despite the large number of techniques, as of today, there are four par
 
 ## Feed Forward Models
 
-The first paradigm of Deep Learning models was the perceptron, they are fully connected feedforward neural networks, today they are often named as the Linear or Dense Layer in deep learning frameworks such as PyTorch and Tensorflow . This class of neural network models are universal function approximators. Given sufficient data, they can learn very complex relationships between inputs and outputs in high dimensional spaces. They model the relationship between an input and an output as a function parameterized by a set of weights and biases. In this model, every node in a previous layer is connected to all nodes in the next layer. In Figure 1 below, we show a simple model that takes the relative humidity and temperature and outputs rain or not rain.
+<figure><img src=".gitbook/assets/perceptron.jpeg" alt=""><figcaption><p>The first implementation of the perceptron neural network by  <strong>Frank Rosenblatt</strong> in 1958</p></figcaption></figure>
+
+The very first neural network was the perceptron, they are fully connected feedforward neural networks, today they are often named as the Linear or Dense Layer in deep learning frameworks such as PyTorch and Tensorflow . This class of neural network models are universal function approximators. Given sufficient data, they can learn very complex relationships between inputs and outputs in high dimensional spaces. They model the relationship between an input and an output as a function parameterized by a set of weights and biases. In this model, every node in a previous layer is connected to all nodes in the next layer. In Figure 1 below, we show a simple model that takes the relative humidity and temperature and outputs rain or not rain.
 
 <figure><img src=".gitbook/assets/mlp.png" alt=""><figcaption><p>Figure 1</p></figcaption></figure>
 
