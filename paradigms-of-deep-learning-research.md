@@ -231,6 +231,13 @@ The above code verbosely illustrates how attention works. Remmeber all we are tr
 2. We store a weight W for every single word, for example, W\_I as the weight for word I. The values of the weights tells us how important each of this words is to encoding the word "coming". For example, unsurprisingly the word "coming" itself carries the highest importance with W\_coming being 0.6, while W\_home is the second most important with a value of 0.2, the two other words carry less importance in determining the encoding of "coming", hence, their values are small.
 3. We multiply each word by its weight and sum up everything together.
 4. The output of the sum above is the value of the word "coming" with different degrees of influence contributed by the other words in order of their weight values.
+5. Repeat the process for all the other words
+
+The above encapsulates the core of how transformers work. However, unlike the way we explictly encode values for W\_coming, W\_I, W\_am e.t.c, the process of computing this weights is slightly more involved.  The example given above is just an illustration.
+
+In the next chapter, we shall discuss how to design transformer architectures in a very efficient and simple manner.
+
+
 
 
 
