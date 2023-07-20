@@ -46,7 +46,7 @@ As we add more layers of this and introduced activation functions such as Sigmoi
 
 In their simple state, multi layer perceptrons are unable to work for the majority of tasks in language processing and computer vision.
 
-***
+
 
 ## Recurrent Neural Networks
 
@@ -66,7 +66,7 @@ In a RNN, to predict the output **"tomorrow"** from the words **"I am coming  ho
 
 5\. Repeat until the last word $$x_{n-1}$$ to get the prediction **"tomorrow"**
 
-****
+
 
 If this confuses you, here is the process written in python code
 
@@ -236,14 +236,3 @@ The above code verbosely illustrates how attention works. Remmeber all we are tr
 The above encapsulates the core of how transformers work. However, unlike the way we explictly encode values for W\_coming, W\_I, W\_am e.t.c, the process of computing this weights is slightly more involved.  The example given above is just an illustration.
 
 In the next chapter, we shall discuss how to design transformer architectures in a very efficient and simple manner.
-
-
-
-
-
-
-
-
-
-&#x20;
-

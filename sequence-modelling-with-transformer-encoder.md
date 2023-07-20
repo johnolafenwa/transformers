@@ -1,4 +1,4 @@
-# Transformer Encoder
+# Sequence Modelling with Transformer Encoder
 
 Transformer encoders are the simplest form of transformer models, they are used for sequence modelling tasks such as text classification, named entity recognition (NER) etc. Sequence modelling tasks with the transformer encoder do not need to be autoregressive or recurrent since we would have access to the entire input needed at the very first step. Also, the order or words in the input would be explicitly modelled using the positional encoding module of the transformer encoder as we shall see in this chapter.
 
@@ -8,7 +8,7 @@ To solve this task, we have the entire English sentence has input and we would t
 
 On the other hand , to classify the topic of the sentence “The game has begun”, we simply feed in the entire sentence into the transformer encoder and predict the topic, which in this case could be “sport”
 
-<figure><img src="../.gitbook/assets/transformer_encoder.png" alt=""><figcaption><p>Figure 4 The words in the input text all travel through the network independently as shown by the color coding, for example, “game” coded red travels through all the paths with red arrows. The only parts of the model where the inputs mix are the self attention module and the output decoder layer, otherwise, they each move through the model from input all the way to the output layer independent of each other.</p></figcaption></figure>
+<figure><img src=".gitbook/assets/transformer_encoder.png" alt=""><figcaption><p>Figure 4 The words in the input text all travel through the network independently as shown by the color coding, for example, “game” coded red travels through all the paths with red arrows. The only parts of the model where the inputs mix are the self attention module and the output decoder layer, otherwise, they each move through the model from input all the way to the output layer independent of each other.</p></figcaption></figure>
 
 Figure 4 above depicts a transformer encoder model that takes in the sentence “the game has begun” and outputs the topic “Sports”.
 
@@ -24,13 +24,13 @@ So we go from **“The game has begun”** to array **\[The, game, has, begun],*
 
 Each of these words would be fed into the model at once as shown in Figure 4, notice how we use color coding to show how each of them travels independently though the network, from the input layers all the way to the final output layer. For example, as we coloured the word “game” with red, every arrow coloured red depicts the flow of the word game through the model.
 
-&#x20;_****_&#x20;
+&#x20;
 
 **Step 2:**
 
 With the input in hand, (4 tokens/word represented by 4 numbers), we would feed them into two separate modules side by side, “Token Embedding” and “Positional Encoding Modules”
 
-<figure><img src="../.gitbook/assets/input_layer.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/input_layer.png" alt=""><figcaption></figcaption></figure>
 
 **Token Embedding**
 
@@ -124,7 +124,7 @@ The final output from this step contains not only the embeddings of the tokens b
 
 After we are done with all our embedding activities, we pass the transformed tokens into a stack of “Self Attention + Linear” blocks. As you would see in Figure 6 below.
 
-<figure><img src="../.gitbook/assets/self attention block.png" alt=""><figcaption><p>Figure 6</p></figcaption></figure>
+<figure><img src=".gitbook/assets/self attention block.png" alt=""><figcaption><p>Figure 6</p></figcaption></figure>
 
 The block shown above is repeated N times as depicted, all of them being identical but without sharing parameters.
 
@@ -142,7 +142,7 @@ This block is repeated N times, with the output from the previous block being pa
 
 &#x20;**Step 4**
 
-<figure><img src="../.gitbook/assets/output_layer1.png" alt=""><figcaption><p><strong>Figure 7</strong></p></figcaption></figure>
+<figure><img src=".gitbook/assets/output_layer1.png" alt=""><figcaption><p><strong>Figure 7</strong></p></figcaption></figure>
 
 The output from the last self attention block is passed to the final linear layer. In this layer, all the values from all the tokens are passed into a single linear layer, hence, the values gets mixed up in a fully connected fashion. This layer would make the final prediction, which in this case is simply to output the classification scores.
 
@@ -154,15 +154,15 @@ The self attention layer transforms the input to an output of shape $$R^{NV}$$, 
 
 This can be seen as depicted in Figure 8 below.
 
-<figure><img src="../.gitbook/assets/transforms.png" alt=""><figcaption><p>Figure 8</p></figcaption></figure>
+<figure><img src=".gitbook/assets/transforms.png" alt=""><figcaption><p>Figure 8</p></figcaption></figure>
 
 &#x20;Recall, in the self attention layer, we are trying to model the dependencies between the tokens, hence, each ![](file:///C:/Users/joolafen/AppData/Local/Temp/msohtmlclip1/01/clip\_image002.png) would be constructed from a function that combines the current token with all the other tokens, naively, this can be done as a sum of all the projections from each token as depicted in Figure 9 below.
 
-<figure><img src="../.gitbook/assets/naive_combine.png" alt=""><figcaption><p>Figure 9</p></figcaption></figure>
+<figure><img src=".gitbook/assets/naive_combine.png" alt=""><figcaption><p>Figure 9</p></figcaption></figure>
 
 The problem with the above is, all the values from the tokens have equal weight, what we want is, for each current token, we need its output to be a weighted sum of the token and all the other tokens (also called context tokens). Figure 10 below illustrates the weighted version of the above formulation, where for each current token being considered, we have a set of weights $$w_0 \ ... \ w_{n-1}$$called attention weights, that represents how much each of the context tokens contributes to the final output value of the token being processed.
 
-<figure><img src="../.gitbook/assets/weighted_combine.png" alt=""><figcaption><p>Figure 10</p></figcaption></figure>
+<figure><img src=".gitbook/assets/weighted_combine.png" alt=""><figcaption><p>Figure 10</p></figcaption></figure>
 
 The idea here is very simple, the bit of complexity is in how the attention weights are computed.
 
@@ -171,8 +171,3 @@ The idea here is very simple, the bit of complexity is in how the attention weig
 &#x20;
 
 &#x20;
-
-&#x20;
-
-
-

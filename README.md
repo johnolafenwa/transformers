@@ -1,6 +1,6 @@
 # Deep Learning with Transformers
 
-<figure><img src=".gitbook/assets/A1.jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/transformers_book.jpg" alt=""><figcaption></figcaption></figure>
 
 ## PREFACE
 
