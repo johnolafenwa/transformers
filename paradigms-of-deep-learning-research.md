@@ -46,7 +46,7 @@ As we add more layers of this and introduced activation functions such as Sigmoi
 
 In their simple state, multi layer perceptrons are unable to work for the majority of tasks in language processing and computer vision.
 
-
+***
 
 ## Recurrent Neural Networks
 
