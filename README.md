@@ -39,10 +39,6 @@ We hope that this book will help deepen your understanding of the incredible adv
 
 ## Table of Contents
 
-{% content-ref url="paradigms-of-deep-learning-research.md" %}
-[paradigms-of-deep-learning-research.md](paradigms-of-deep-learning-research.md)
-{% endcontent-ref %}
-
 {% content-ref url="sequence-modelling-with-transformer-encoder.md" %}
 [sequence-modelling-with-transformer-encoder.md](sequence-modelling-with-transformer-encoder.md)
 {% endcontent-ref %}
@@ -55,27 +51,19 @@ We hope that this book will help deepen your understanding of the incredible adv
 [sequence-to-sequence-generation-with-transformer-encoder-decoder.md](sequence-to-sequence-generation-with-transformer-encoder-decoder.md)
 {% endcontent-ref %}
 
-{% content-ref url="self-supervised-pretraining-of-transformers.md" %}
-[self-supervised-pretraining-of-transformers.md](self-supervised-pretraining-of-transformers.md)
-{% endcontent-ref %}
-
-{% content-ref url="speeding-up-transformers.md" %}
-[speeding-up-transformers.md](speeding-up-transformers.md)
-{% endcontent-ref %}
-
-{% content-ref url="case-studies-of-transformer-models/" %}
-[case-studies-of-transformer-models](case-studies-of-transformer-models/)
-{% endcontent-ref %}
-
-{% content-ref url="finetuning-large-language-models/" %}
-[finetuning-large-language-models](finetuning-large-language-models/)
+{% content-ref url="architecture-enhancements.md" %}
+[architecture-enhancements.md](architecture-enhancements.md)
 {% endcontent-ref %}
 
 {% content-ref url="vision-transformers.md" %}
 [vision-transformers.md](vision-transformers.md)
 {% endcontent-ref %}
 
-{% content-ref url="speech-transformers.md" %}
-[speech-transformers.md](speech-transformers.md)
+{% content-ref url="case-studies-of-transformer-models/" %}
+[case-studies-of-transformer-models](case-studies-of-transformer-models/)
+{% endcontent-ref %}
+
+{% content-ref url="optimizing-attention.md" %}
+[optimizing-attention.md](optimizing-attention.md)
 {% endcontent-ref %}
 
