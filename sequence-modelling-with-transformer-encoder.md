@@ -36,6 +36,30 @@ In our pursuit of building intelligent systems that can see, hear, read, draw, w
 
 
 
+### Setup
+
+We need to install a couple of things before we start discussing code and equations for transformers.
+
+#### Install Python3
+
+Install a recent version of python using conda or download it from [https://python.org](https://python.org)
+
+#### Install Pytorch
+
+We will be using pytorch for all experiments, go to [https://pytorch.org ](https://pytorch.org)for instructions on installing pytorch for your OS.
+
+
+
+#### Install a few Extra Dependencies
+
+In addition to pytorch, we will be using huggingface datasets library for loading datasets, as well as a few other libaries
+
+```bash
+pip3 install datasets tiktoken matplotlib
+```
+
+
+
 
 
 
