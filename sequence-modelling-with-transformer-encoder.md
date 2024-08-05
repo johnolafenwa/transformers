@@ -162,6 +162,13 @@ The image above is a simplified illustration of how a transformer model takes a 
 5. Pass the resulting vector through a list of N Feedforward + Attention layers. The attention layer learns the context and meaning of the words.
 6. Pass the final output to the classification layer which will predict the final outcome such as the category of the text.
 
+In the rest of this chapter, we shall explain each of this components in detail and implement them in pytorch. Finally, we shall put together all the layers and use it to construct a full transformer encoder model and use it to train a text classification model. Let's get to it!\
+
+
+
+
+
+
 
 
 
