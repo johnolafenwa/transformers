@@ -48,8 +48,6 @@ Install a recent version of python using conda or download it from [https://pyth
 
 We will be using pytorch for all experiments, go to [https://pytorch.org ](https://pytorch.org)for instructions on installing pytorch for your OS.
 
-
-
 #### Install a few Extra Dependencies
 
 In addition to pytorch, we will be using huggingface datasets library for loading datasets, as well as a few other libaries
@@ -60,11 +58,64 @@ pip3 install datasets tiktoken matplotlib
 
 
 
+### NLP Prerequisite - Text Tokenization
+
+Before we dive into the details of using transformers to process text, we need to understand the nature of text data and how neural networks are able to process it. Text is strings, however, neural networks are composed of mathematical operations which can only operate with numbers, either discrete (0,1,6,7) or continous ( 0.3, 1.67, 2.98).&#x20;
+
+Therefore, we need a processes to convert text  (words, letters, symbols) into numbers before we can process them with a neural network. This process of turning text into numbers is called tokenization. You might notice we installed a python package named `tiktoken`, we will be using this extensively throughout this book for converting text to numbers. We will also explain how tokenizers work.
+
+Below is an example of tokenizing text with tiktoken.
+
+```python
+""" Converting Text to Tokens """
+import tiktoken
+
+# create an instance of the GPT2 tokenizer 
+tokenizer = tiktoken.get_encoding("gpt2")
+
+text = "London is a beautiful city"
+
+# tokenize your text
+tokenized_text = tokenizer.encode(text)
+
+# print result to see the tokens
+print(tokenized_text)
+```
+
+When you run the above, you get the outcome below.
+
+```bash
+[23421, 318, 257, 4950, 1748]
+```
+
+These are called the tokens, which is the numbers representing the text, notice how we have 5 words in the source text `London is a beautiful city`, and 5 numbers in the token representation, `[23421, 318, 257, 4950, 1748]`, this is because, the text is splitted by the tokenizer into words and then each word is mapped to its equivalent integer, (we will discuss how this works under the hood shortly).
+
+The cool thing is, you can take these tokens/numbers and convert them back into into the original text, the mapping is both ways. Let's put these to test.
 
 
 
+```python
+""" Converting Tokens to Text """
+import tiktoken
 
+# create an instance of the GPT2 tokenizer 
+tokenizer = tiktoken.get_encoding("gpt2")
 
+#the tokens we want to convert back to text
+tokens = [23421, 318, 257, 4950, 1748]
+
+converted_text = tokenizer.decode(tokens)
+
+print(converted_text)
+```
+
+When you run the above, you get
+
+```bash
+London is a beautiful city
+```
+
+As you can see, it gave us back the exact text that produced those tokens in the first place, providing a consistent way to map text to numbers/tokens and tokens back to text.
 
 
 
