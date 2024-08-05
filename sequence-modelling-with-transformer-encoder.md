@@ -117,5 +117,31 @@ London is a beautiful city
 
 As you can see, it gave us back the exact text that produced those tokens in the first place, providing a consistent way to map text to numbers/tokens and tokens back to text.
 
+#### How Tokenizers Work
+
+Tokenizers are basically a giant dictionary of words and symbols mapped to integers. Predefined tokenizers such as the gpt2 tokenizer we have used above contain thousands of words mapped to arbitary numbers. We can define such a vocabulary ourselves as seen below.
+
+```python
+vocabulary = {
+    "hello": 1,
+    "world": 2,
+    "this": 3,
+    "is": 4,
+    "a": 5,
+    "test": 6
+}
+```
+
+As you can see above, the assignment of words to integers is arbitary, the most important thing is each mapping has to be unique, no two words should map to the same integer and no two integers should map to the same word.
+
+As long as we have such a unique dictionary of sufficiently large size, we can tokenize any text by.
+
+1. Splitting it into words , e.g `this test` -> `[this, test]`
+2. Convert the words into tokens using the vocabulary `[this, test]` -> `[3, 6]`&#x20;
+
+We can convert back to the text through the reverse process.
+
+Note also, the text isn't always split into words, typically sub-word tokenization is used, for example, a single word such as `building` will be split into two sub words, `build, ing` which will be then mapped to 2 tokens rather than 1.
+
 
 
