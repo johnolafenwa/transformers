@@ -143,5 +143,26 @@ We can convert back to the text through the reverse process.
 
 Note also, the text isn't always split into words, typically sub-word tokenization is used, for example, a single word such as `building` will be split into two sub words, `build, ing` which will be then mapped to 2 tokens rather than 1.
 
+We will pause our discussion of text tokenization there for now and get to explaining the various components of the transformer model.
+
+
+
+### Components of a Transformer Encoder
+
+<figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption><p>Illustration of of transformer model for topic classification</p></figcaption></figure>
+
+
+
+The image above is a simplified illustration of how a transformer model takes a sequence of text and predicts some output, in this case, topic classification. Basically, the flow in the diagram above can be broken down below.
+
+1. Convert the text into tokens using the tokenizer
+2. Convert the tokens into embeddings using the embedding layer
+3. Convert the position of each token into a positional encoding using the positional encoding layer
+4. Add the token embedding and the positional embedding vectors
+5. Pass the resulting vector through a list of N Feedforward + Attention layers. The attention layer learns the context and meaning of the words.
+6. Pass the final output to the classification layer which will predict the final outcome such as the category of the text.
+
+
+
 
 
