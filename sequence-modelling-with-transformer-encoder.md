@@ -165,6 +165,24 @@ The image above is a simplified illustration of how a transformer model takes a 
 In the rest of this chapter, we shall explain each of this components in detail and implement them in pytorch. Finally, we shall put together all the layers and use it to construct a full transformer encoder model and use it to train a text classification model. Let's get to it!\
 
 
+### Embedding Layer
+
+The first layer of a transformer model is the embedding layer, this layer takes the tokens and converts each of them into a learned vector representation.
+
+For example, once we have tokenized our text, "The goal was great", it becomes an array of integers like `X = [464, 3061, 373, 1049]` , mathematically, each of this integers/tokens is represented as $$x_i \subset R^1$$, which is just a fancy way of writing, each token $$x_i$$ in the set $$X$$ of all the input tokens to our transformer model is a real number with a single dimension (i.e, a scalar). In case this is confusing,&#x20;
+
+a single number like `34` is represented as $$R^1$$ or simply $$R$$ while a vector like `[2.4, 7.9]` is represented as $$R^2$$
+
+The embedding layer will project each token $$R^1$$ to a learned vector $$R^N$$, where N is the embedding dimension of the embedding layer.
+
+Let's take a step back and discuss why we are doing this and what we are really doing by converting our tokens from their simple single number integer form to some more complex vector.
+
+Remmember, during tokenization, we simply had a large dictionary of words predefined and we use that to map words and subwords to integers/tokens and back to words/subwords. This mapping is arbitary in the sense that, we can define `love` to map to 34, `affection` to map to 100 and `dislike` to 56, however this numbers have no implicit or explicit meaning, we could swap the numbers and it won't make any difference, for example, while love and affection are synonymous and dislike is the opposite of them, this relationships are not expressed by the integer value at all. Basically, the integer values of the tokens are meaningless. The embedding layer learns this meaning, during training, it maps the meaningless integer values into meaningful vector representations. For example, after training, the embedding vector $$R^N$$ of `love` and `affection` will be very similar, such that if you take the cosine similarity between the two vectors, it will be quite high, in the same way, the embedding vector $$R^N$$ of `love` and `dislike` will be quite disimilar such that if you compute the cosine similarity between the two vectors, it will be quite low. The key is, while tokenization makes it possible to turn text into numbers, the individual meaning of those words is learnt by the text embedding layer which turns the integers into embedding vectors. Note that we said, `individual` meanings, that is because, the meaning of the words can be changed due to context of the surrounding words. In order to learn the contextual meaning, we need the entire transformer model, with the attention layer being resposible for deriving the contextual meaning of each word and the entire sequence.
+
+$$
+R^1
+$$
+
 
 
 
