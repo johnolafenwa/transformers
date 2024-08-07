@@ -189,6 +189,10 @@ Above, for each of theses numbers we learn a 6 dimensional vector, meaning we th
 
 For example, token `31999` above, which in the tiktoken tokenizer maps to the word `extraordinarily`, has a learned 6 dimensional vector representation of `[0.96, 3.5, 4.56, 1.6, 2.8, 3.3]`,  this six dimensional vector is what we will pass to the other layers of our transformer model. Note, the above embeddings are just random values I made up to illustrate this, the values learned by the embedding layer of your trained model will be different from this and will be similar for similar words and quite different for different words.
 
+The concept of embedding tokens into vector representations where similar tokens will be also similar in their vector representation and different tokens will be distinctly different in their vector representations, predates transformers. Word embeddings was largely popularized by the work of [Tomas Mikolov](https://arxiv.org/search/cs?searchtype=author\&query=Mikolov,+T) et al, in their landmark paper,[Efficient Estimation of Word Representations in Vector Space](https://arxiv.org/abs/1301.3781)
+
+They trained a couple of models to learn semantic vector representations of words in a continuos vector space.&#x20;
+
 
 
 
