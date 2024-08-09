@@ -193,7 +193,92 @@ The concept of embedding tokens into vector representations where similar tokens
 
 They trained a couple of models to learn semantic vector representations of words in a continuos vector space.&#x20;
 
+Now, let us see how to actually implement the embedding layer of the transformer in pytorch.
 
 
 
+```python
+import torch
+import torch.nn as nn
+
+class TokenEmbedding(nn.Module):
+    def __init__(self, vocab_size: int, embedding_dim: int):
+
+        super().__init__()
+
+        # Embedding layer maps discrete tokens to continous vectors
+        # of dimension `embedding_dim`
+        self.embedding_layer = nn.Embedding(
+                                    num_embeddings=vocab_size, 
+                                    embedding_dim=embedding_dim
+                                )
+
+    def forward(self, tokens: torch.Tensor) -> torch.Tensor:
+        """
+        Args:
+            tokens (torch.Tensor): Input tensor of shape (batch_size, seq_len).
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, embedding_dim).
+        """
+
+        # Get the embedding vector for the tokens
+        embedding_vector = self.embedding_layer(tokens)
+
+        return embedding_vector
+```
+
+
+
+The TokenEmbedding module above defines a pytorch module that contains an `nn.Embedding` layer with a vocabulary size equal to the total number of unique tokens that our model will support. This will be set to the size of our tokenizers dictionary, for example, if our tokenizer has a vocabulary size of 32, 000, we will set the number of embeddings in the embedding layer to be 32 000. This corresponds to the number of rows in `Fig 2.2` . The embedding dim defines the size of each embedding vector, this is the number of columns in `Fig 2.2` .&#x20;
+
+In the forward function, we will pass in a bach of tokens, this will be of shape `[batch_size, seq_len]`, where `seq_len` is the number of tokens in our sequence. For example, `"The goal was great"` converts to 4 tokens  `[464, 3061, 373, 1049]`using the gpt2 tokenizer, therefore, the seq\_len is 4. In this function, the batch of tokens `[batch_size, seq_len]` we pass in will be passed down to the embedding layer which will then return a batch of vectors of shape, `[batch_size, seq_len, embedding_dim]`. As you can see, this changes every single integer token into a vector of dimension `embedding_dim.`
+
+Below, we shall see this layer in action.
+
+```python
+# create an instance of the embedding layer
+embedding_layer = TokenEmbedding(vocab_size=32_000, embedding_dim=6)
+  
+# create a token tensor of shape [1, 5], batch size 1, 5 tokens  
+tokens = torch.tensor(
+    [
+        [101, 2, 3, 4, 5]
+    ]
+    )
+
+# print the shape of the tokens to verify
+print(tokens.shape)
+```
+
+```bash
+torch.Size([1, 5])
+```
+
+```python
+# pass the tokens to the token embedding layer
+embedding_vector = embedding_layer(tokens)
+
+#print the shape of the output
+print(embedding_vector.shape)
+```
+
+```bash
+torch.Size([1, 5, 6])
+```
+
+```python
+# print the values of the output
+print(embedding_vector)
+```
+
+```bash
+tensor([[[-0.6032,  0.3096, -0.7081,  0.3671,  2.0060, -0.3745],
+         [-0.4043, -0.4408, -0.5171,  0.6112, -0.3060,  0.0929],
+         [ 1.4664, -1.7769, -0.5547,  1.4262,  0.5070, -1.0793],
+         [-0.8065, -2.8148, -1.3158,  2.5726, -0.6245,  2.1777],
+         [-1.8424, -0.8758, -1.7499,  0.9136,  1.0817,  0.6446]]],
+       grad_fn=<EmbeddingBackward0>)
+```
+
+As you can see above, the token embedding layer has converted our simple list of tokens into a list of vectors. For example, the first token `101` has been converted to  vector`[-0.6032,  0.3096, -0.7081,  0.3671,  2.0060, -0.3745]`
 
