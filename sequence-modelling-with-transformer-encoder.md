@@ -169,7 +169,7 @@ In the rest of this chapter, we shall explain each of this components in detail 
 
 The first layer of a transformer model is the embedding layer, this layer takes the tokens and converts each of them into a learned vector representation.
 
-For example, given the text, "The goal was great", when we tokenize it, it becomes an array of integers like `X = [464, 3061, 373, 1049]` , mathematically, each of this integers/tokens is represented as $$x_i \subset R^1$$,  which means, each token ( $$x_i$$) is a single real number ( $$R^1$$). Real numbers refers to the set of all normal numbers we use everyday like, -5, 0, 2.5, 8, basically, any number that. is not a complex number (doesn't have an imaginary part)  is a real number.&#x20;
+For example, given the text, "The goal was great", when we tokenize it, it becomes an array of integers like `X = [464, 3061, 373, 1049]` , mathematically, each of this integers/tokens is represented as $$x_i \subset R^1$$,  which means, each token ( $$x_i$$) is a single real number ( $$R^1$$). Real numbers refers to the set of all normal numbers we use everyday like, `-5`, `0`, `2.5`, `8` etc, basically, any number that. is not a complex number (doesn't have an imaginary part)  is a real number.&#x20;
 
 If this sounds confusing in any way, consider this, A single number like `34` is represented as $$R^1$$ or simply $$R$$ while a vector like `[2.4, 7.9]` is represented as $$R^2$$, note the `2` on top of `R` refers to the number of elements in the vector.
 
@@ -281,4 +281,20 @@ tensor([[[-0.6032,  0.3096, -0.7081,  0.3671,  2.0060, -0.3745],
 ```
 
 As you can see above, the token embedding layer has converted our simple list of tokens into a list of vectors. For example, the first token `101` has been converted to  vector`[-0.6032,  0.3096, -0.7081,  0.3671,  2.0060, -0.3745]`
+
+### Positional Encoding
+
+The position of tokens matter a lot, as we have considered earlier, changing the position of words will typically alter the meaning of a sequence, in fact, if you alter the position too much,  it can become giberish. In transformers, the position encoding layer injects positional information into the embeddings of the tokens, this ensures, the same word in different positions have embeddings that not only captures the individual meaning of the token but also its position in the sequence.
+
+There are many approaches to design the positional encoding layer, we will consider some of them later in this book, in this chapter, we shall use the simplest one.
+
+The original transformer paper, [Vaswani et al, 2017](https://arxiv.org/abs/1706.03762), proposed to project the position $$p_i$$  of the ith token to a vector of the same dimension $$N$$ as the embedding layer.
+
+For example, given the tokens, `[464, 3061, 373, 1049]` , to embed the 3rd token `373` , we do the following.
+
+1. Use the embedding layer defined previously to convert `373` to a learned vector $$R^N$$, the result could be like this, `[-0.8065, -2.8148, -1.3158,  2.5726, -0.6245,  2.1777]`, where `N` is 6 in this example. This vector will capture the individual meaning of the token. Let's call this vector $$V_{embedding}$$
+2. Take the position of the token `373`, counting from 0, its position is 2.&#x20;
+3. Project the position `2` to a vector $$R^N$$ where N is the same dimension as the embedding, `N = 6` in step 1 above. The value of the positional embedding can be like this,  `[ 0.4782, -1.9347, 0.8724, -0.6543, 1.5278, -1.2981 ]` This vector will capture the positional information of the token. Let's call the vector $$V_{position}$$
+4. Given the token embedding vector $$V_{embedding}$$ and positional vector $$V_{position}$$. The final vector $$V_{token}$$ representing the token, is computed by adding the two. This gives rise to the equation\
+   $$V_{token} = V_{embedding} + V_{position}$$
 
