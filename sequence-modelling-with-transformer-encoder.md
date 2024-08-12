@@ -169,9 +169,9 @@ In the rest of this chapter, we shall explain each of this components in detail 
 
 The first layer of a transformer model is the embedding layer, this layer takes the tokens and converts each of them into a learned vector representation.
 
-For example, once we have tokenized our text, "The goal was great", it becomes an array of integers like `X = [464, 3061, 373, 1049]` , mathematically, each of this integers/tokens is represented as $$x_i \subset R^1$$, which is just a fancy way of writing, each token $$x_i$$ in the set $$X$$ of all the input tokens to our transformer model is a real number with a single dimension (i.e, a scalar). In case this is confusing,&#x20;
+For example, given the text, "The goal was great", when we tokenize it, it becomes an array of integers like `X = [464, 3061, 373, 1049]` , mathematically, each of this integers/tokens is represented as $$x_i \subset R^1$$,  which means, each token ( $$x_i$$) is a single real number ( $$R^1$$). Real numbers refers to the set of all normal numbers we use everyday like, -5, 0, 2.5, 8, basically, any number that. is not a complex number (doesn't have an imaginary part)  is a real number.&#x20;
 
-a single number like `34` is represented as $$R^1$$ or simply $$R$$ while a vector like `[2.4, 7.9]` is represented as $$R^2$$
+If this sounds confusing in any way, consider this, A single number like `34` is represented as $$R^1$$ or simply $$R$$ while a vector like `[2.4, 7.9]` is represented as $$R^2$$, note the `2` on top of `R` refers to the number of elements in the vector.
 
 The embedding layer will project each token $$R^1$$ to a learned vector $$R^N$$, where N is the embedding dimension of the embedding layer.
 
