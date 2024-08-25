@@ -298,3 +298,36 @@ For example, given the tokens, `[464, 3061, 373, 1049]` , to embed the 3rd token
 4. Given the token embedding vector $$V_{embedding}$$ and positional vector $$V_{position}$$. The final vector $$V_{token}$$ representing the token, is computed by adding the two. This gives rise to the equation\
    $$V_{token} = V_{embedding} + V_{position}$$
 
+Implementation of Positional Encoding
+
+Below we shall implement the positional encoding layer in pytorch
+
+```python
+import torch
+import torch.nn as nn
+
+class PositionalEncoding(nn.Module):
+    def __init__(self, max_seq_len: int, embedding_dim: int):
+
+        super().__init__()
+
+        # Embedding layer to map each position to continous vectors
+        # of dimension `embedding_dim`
+        self.positional_encoding = nn.Embedding(
+                                    num_embeddings=max_seq_len, 
+                                    embedding_dim=embedding_dim
+                                )
+        
+    def forward(self, token_positions: torch.Tensor) -> torch.Tensor:
+        """
+        Args:
+            tokens (torch.Tensor): Input positions of shape (batch_size, seq_len).
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, embedding_dim).
+        """
+       
+        positional_encoding = self.positional_encoding(token_positions)
+
+        return positional_encoding
+```
+
