@@ -298,7 +298,7 @@ For example, given the tokens, `[464, 3061, 373, 1049]` , to embed the 3rd token
 4. Given the token embedding vector $$V_{embedding}$$ and positional vector $$V_{position}$$. The final vector $$V_{token}$$ representing the token, is computed by adding the two. This gives rise to the equation\
    $$V_{token} = V_{embedding} + V_{position}$$
 
-Implementation of Positional Encoding
+### Implementation of Positional Encoding
 
 Below we shall implement the positional encoding layer in pytorch
 
@@ -330,4 +330,54 @@ class PositionalEncoding(nn.Module):
 
         return positional_encoding
 ```
+
+
+
+The module above is very similary to the token embedding layer. It defines an embedding table that maps every single position integer $$R^1$$ from 0 up to the maximum sequence length supported to a vector $$R^N$$ representing that position. The maximum sequence length defines the length of the longest sequence our model supports, for example, if we set our maximum sequence length to 1024, it means our model supports sequences as long as 1024 tokens.
+
+Below we will construct a simple TransformerEncoder model that utilizes both the token embedding and the positional encoding layers.
+
+```python
+class TransformerEncoder(nn.Module):
+    def __init__(self, embedding_dim: int, vocab_size: int, max_seq_len: int):
+        super().__init__()
+
+        self.embedding_dim = embedding_dim
+        self.max_seq_len = max_seq_len
+
+        self.positional_encoding = PositionalEncoding(max_seq_len=max_seq_len, embedding_dim=embedding_dim)
+
+        self.token_embedding = TokenEmbedding(vocab_size=vocab_size, embedding_dim=embedding_dim)
+
+    def forward(self, tokens: torch.Tensor, token_positions: torch.Tensor) -> torch.Tensor:
+        """
+        Args:
+            tokens (torch.Tensor): Input tensor of shape (batch_size, seq_len).
+            token_positions (torch.Tensor): Input tensor of shape (batch_size, seq_len).
+        Returns:
+            torch.Tensor: Output tensor of shape (batch_size, seq_len, embedding_dim).
+        """
+
+        token_embedding = self.token_embedding(tokens)
+
+        positional_encoding = self.positional_encoding(token_positions)
+
+        token_embedding = token_embedding + positional_encoding
+
+        return token_embedding
+```
+
+The `TransformerEncoder` layer above takes a tensor of tokens of shape `[batch_size, num_tokens]` as well as a tensor of the token positions of shape, `[batch_size, num_tokens]`
+
+For each token, there is a position, hence, the number of positions is equal to the number of tokens.&#x20;
+
+The tokens are then embedded with the `TokenEmbedding` layer, and the positions is embedded with the `PositionalEncoding` layer. Finally, the two are added together and returned. Throught this chapter, we shall evolve the implementation to include attention layers and the final prediction layer.
+
+Below, we will show a simple example of encoding a sequence of tokens with the transformer encoder.
+
+
+
+
+
+
 
