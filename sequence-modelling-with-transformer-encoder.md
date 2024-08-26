@@ -375,7 +375,54 @@ The tokens are then embedded with the `TokenEmbedding` layer, and the positions 
 
 Below, we will show a simple example of encoding a sequence of tokens with the transformer encoder.
 
+```python
+import tiktoken
 
+# Create an instance of the TransformerEncoder
+transformer_encoder = TransformerEncoder(embedding_dim=10, vocab_size=32_000, max_seq_len=1024)
+
+# create an instance of the GPT2 tokenizer 
+tokenizer = tiktoken.get_encoding("gpt2")
+
+text = "London is a beautiful city"
+
+# tokenize your text
+tokens = tokenizer.encode(text) # output [23421, 318, 257, 4950, 1748]
+
+# convert tokens to tensor and unsqueeze to add a batch dimension
+tokens = torch.tensor(tokens).unsqueeze(0) # output: tensor([[23421, 318, 257, 4950, 1748]])
+
+# create token positions and unsqueeze to add a batch dimension
+token_positions = torch.arange(tokens.shape[1]).unsqueeze(0) # output: tensor([[0, 1, 2, 3, 4]])
+
+token_embedding = transformer_encoder(tokens, token_positions)
+
+print(f"token_embedding shape: {token_embedding.shape}")
+
+print(f"token_embedding values: {token_embedding}")
+
+```
+
+When you run the above, you should get an output similar to this
+
+```bash
+token_embedding shapae: torch.Size([1, 5, 10])
+```
+
+And the raw values for the token embedding vectors
+
+```bash
+token_embedding values: tensor([[[ 0.8921,  0.2394,  2.0508, -2.0186, -0.5405,  3.1452, -0.1898,
+           0.7312, -0.6877, -1.4844],
+         [ 1.0934,  2.0134,  0.0487,  0.2306, -0.6255,  0.8026,  0.7804,
+           0.3858, -1.3905, -0.3513],
+         [-0.1986, -0.9755,  0.4153,  0.0431, -1.1052,  2.4304, -0.7809,
+          -0.0702, -0.1318,  2.5685],
+         [-1.0514, -1.2155,  2.7084, -0.8804, -3.0519, -1.3012, -0.2987,
+          -0.2701,  0.0784,  0.2866],
+         [-0.1328, -1.6788, -0.6369, -0.0082, -0.0790, -2.4916,  3.2005,
+          -0.3422,  0.5807,  0.7536]]], grad_fn=<AddBackward0>)
+```
 
 
 
