@@ -373,6 +373,11 @@ For each token, there is a position, hence, the number of positions is equal to 
 
 The tokens are then embedded with the `TokenEmbedding` layer, and the positions is embedded with the `PositionalEncoding` layer. Finally, the two are added together and returned. Throught this chapter, we shall evolve the implementation to include attention layers and the final prediction layer.
 
+As earlier explained, the `vocab_size` is the total number of unique tokens present in the tokenizer (the tokenizer's vocabulary) and the `max_seq_len` is the size of the longest sequence our model will support. We will love to support unlimited sequence lenght, but in practise, there is a max at which our model will stop working well due to.
+
+1. The length of the longest sequences available in our training data
+2. More importantly, limitations of GPU memory during training, we will see more on this later when we explain attention.
+
 Below, we will show a simple example of encoding a sequence of tokens with the transformer encoder.
 
 ```python
@@ -423,6 +428,22 @@ token_embedding values: tensor([[[ 0.8921,  0.2394,  2.0508, -2.0186, -0.5405,  
          [-0.1328, -1.6788, -0.6369, -0.0082, -0.0790, -2.4916,  3.2005,
           -0.3422,  0.5807,  0.7536]]], grad_fn=<AddBackward0>)
 ```
+
+
+
+So far, we can see how to begin implementing a transformer encoder that encodes the individual meaning of tokens as well as their positional information, next up we will design and the encoder blocks which consist of alternating `FeedForward` layers + `AttentionLayers`
+
+## Encoder Block
+
+The encoder block is responsible for learning deeper representations of the input tokens as well as learning the semantic meaning of the tokens via the attention layer. Most of the parameters of our transformer encoder can be found in the stack of encoder blocks.
+
+
+
+
+
+
+
+
 
 
 
