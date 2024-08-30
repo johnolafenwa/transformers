@@ -437,7 +437,11 @@ So far, we can see how to begin implementing a transformer encoder that encodes 
 
 The encoder block is responsible for learning deeper representations of the input tokens as well as learning the semantic meaning of the tokens via the attention layer. Most of the parameters of our transformer encoder can be found in the stack of encoder blocks.
 
+The first encoder block takes the `token_embedding + positional_encoding` vector of shape `[batch_size, sequence_length, embedding_dim]`  $$R^N$$and transforms it using both a feedforward layer and an attention layer into an ouput vector of same shape `[batch_size, sequence_length, embedding_dim]`  , these output vector will encode both the individual and contextual meaning of the sequence.  In a transformer model, there will be N number of encoder blocks stacked up.
 
+The stack of encoder layers will look like below.
+
+<figure><img src=".gitbook/assets/image (5).png" alt=""><figcaption></figcaption></figure>
 
 
 
