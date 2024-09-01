@@ -1,6 +1,6 @@
 # Linear Algebra Preliminaries
 
-Understanding how transformers work requires some basic knowledge of linear algebra. These includes vector arithmetic, matrix operations and basic probability. To ease your understanding of the subsequent chapters in this book, we shall devote this chapter to discussing these fundamental math concepts, their equations and how to implement them in code. These should hopefully enable you comprehend some of the more mathematically involved aspects of the transformer architecture, specifically the attention mechanism.
+Understanding how transformers work requires some basic knowledge of linear algebra. These includes vector arithmetic and matrix operations. To ease your understanding of the subsequent chapters in this book, we shall devote this chapter to discussing these fundamental math concepts, their equations and how to implement them in code. These should hopefully enable you comprehend some of the more mathematically involved aspects of the transformer architecture, specifically the attention mechanism.
 
 ## Data Types
 
@@ -346,9 +346,39 @@ Therefore $$A * B = \begin{pmatrix} 57 & 85 \\ 44 & 30 \\ \end{pmatrix}$$
 
 You can compute matrix multiplication in pytorch quite easily as shown below.
 
+```python
+import torch
+
+# Define matrix A
+A = torch.tensor([
+    [7, 3, 8],
+    [2, 5, 1]
+])
+
+# Define matrix B
+B = torch.tensor([
+    [4, 9],
+    [7, 2],
+    [1, 2]
+])
+
+# Perform matrix multiplication
+C = torch.matmul(A, B)
+
+# Print the result
+print("matrix multiplication: ", C)
+```
+
+When you run this, the result will be
+
+```bash
+matrix multiplication:  tensor([[57, 85],
+        [44, 30]])
+```
 
 
 
+With these few things out of the way, in the next chapter, we shall begin studying the transformer architecture.
 
 
 
