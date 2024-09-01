@@ -318,6 +318,16 @@ and two column vectors, $$r1 = \begin{pmatrix} a & b \end{pmatrix}$$ and $$r2 = 
 
 
 
+To multiply two matrices, you have to compute take each row vector of the first matrix and compute its dot product with each column vector of the second matrix. Let's go through an example.
+
+
+
+Given&#x20;
+
+
+
+
+
 
 
 
