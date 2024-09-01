@@ -318,11 +318,33 @@ and two column vectors, $$r1 = \begin{pmatrix} a & b \end{pmatrix}$$ and $$r2 = 
 
 
 
-To multiply two matrices, you have to compute take each row vector of the first matrix and compute its dot product with each column vector of the second matrix. Let's go through an example.
+To multiply two matrices, you have to take each row vector of the first matrix and compute its dot product with each column vector of the second matrix. The resulting matrix will have number of rows equal to the number of rows in your first matrix and the number of columns will be equal to the number of columns in the second matrix. As a rule, in order to multiply two matrices, the number of columns in the first matrix must be equal to the number of rows in the second matrix.
 
 
 
-Given&#x20;
+Below, we shall see an example of how to multiply a 2 \* 3 matrix with a 2 \* 2 matrix.
+
+Given   $$A = \begin{pmatrix} 7 & 3 & 8 \\ 2 & 5 & 1 \end{pmatrix}$$ and $$B = \begin{pmatrix} 4 & 9  \\ 7 & 2 \\ 1 & 2  \end{pmatrix}$$
+
+To multiply both, lets create a new `rows x columns`  matrix C where the rows is the number of rows in A and columns is the number of columns in B.
+
+&#x20;$$C = \begin{pmatrix} C_{11} & C_{12}  \\ C_{21} & C_{22}  \\ \end{pmatrix}$$
+
+We will compute the values below
+
+$$C_{11} = A_{row1} . B_{column1} = [7 * 4 + 3 * 7 + 8 * 1] = [28 + 21 + 8] = 57$$
+
+&#x20;$$C_{12} = A_{row1} . B_{column2} = [7 * 9 + 3 * 2 + 8 * 2] = [63 + 6 + 16] = 85$$
+
+$$C_{21} = A_{row2} . B_{column1} = [2 * 4 + 5 * 7 + 1 * 1] = [8 + 35 + 1] = 44$$
+
+&#x20;$$C_{22} = A_{row2} . B_{column2} = [2 * 9 + 5 * 2 + 1 * 2] = [18 + 10 + 2] = 30$$
+
+
+
+Therefore $$A * B = \begin{pmatrix} 57 & 85 \\ 44 & 30 \\ \end{pmatrix}$$
+
+
 
 
 
