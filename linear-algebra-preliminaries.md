@@ -233,3 +233,20 @@ hadamard_product:  tensor([3.0000, 1.8000])
 
 
 
+Similarly, we can multiply a vector and a scalar by simply multiplying every element in the vector with the scaler, below is an example in pytorch
+
+```python
+import torch
+
+scalar = torch.tensor([5.0])
+vector = torch.tensor([1.5, 0.6])
+# product = [1.5 * 5.0, 0.6 * 5.0]
+product = vector * scalar
+print("product: ", product)
+```
+
+This will output
+
+```bash
+product:  tensor([7.5000, 3.0000])
+```
