@@ -200,3 +200,36 @@ This will output
 ```bash
 dot_product:  tensor(4.8000)
 ```
+
+#### Hadamard product
+
+This is the element wise product, it works very similar to vector addition. Rather than add element wise, we simply multiply element wise.
+
+Given $$\mathbf{A} = \begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}$$
+
+
+
+The hadamaard product $$\mathbf{C} = \mathbf{A} \odot \mathbf{B}$$ is&#x20;
+
+$$\mathbf{C} = \begin{bmatrix} a_1 b_1 \\ a_2 b_2 \\ \vdots \\ a_n b_n \end{bmatrix}$$
+
+Below is an example in pytorch
+
+```python
+import torch
+
+v1 = torch.tensor([1.5, 0.6])
+v2 = torch.tensor([2.0, 3.0])
+# hadamard product of [1.5, 0.6] and [2.0, 3.0]
+hadamard_product = v1 * v2
+print("hadamard_product: ", hadamard_product)
+```
+
+This will output
+
+```python
+hadamard_product:  tensor([3.0000, 1.8000])
+```
+
+
+
