@@ -120,6 +120,14 @@ Mathematically, this can be expressed as ;
 
 Given two vectors A and B, the sum C = A + B of both vectors is computed elementwise as $$C_{i} = A_i + B_i$$. For example, `[2.0,  3.5] + [0.3, 1.0] = [2.0 + 0.3, 3.5 + 1.0] = [2.3, 4.5]`
 
+Graphically, these looks like this
+
+&#x20;$$\mathbf{A} = \begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}$$
+
+
+
+$$\mathbf{C} = \mathbf{A} + \mathbf{B} = \begin{bmatrix} a_1 + b_1 \\ a_2 + b_2 \\ \vdots \\ a_n + b_n \end{bmatrix}$$
+
 Note, you can only add two vectors to each other , their dimensions must be the same. For example, you can't add two vectors where one has 4 elements and the other has 6 elements.
 
 One exception to this is adding a scalar to a vector, you can add a scalar to a vector by simply adding the number to every single element in the vector. Example below.
@@ -142,3 +150,12 @@ vector_scalar_add:  tensor([3.5000, 1.5000, 5.0000])
 ```
 
 As you can see from the comment in the code, we simply added the scalar to every single element in the vector.
+
+Graphically, we can represent vector scalar addition as
+
+&#x20;$$\mathbf{Vector} = \begin{bmatrix} v_1 \\ v_2 \\ \vdots \\ v_n \end{bmatrix} \quad \text{and} \quad \mathbf{Scalar} = x$$
+
+&#x20;$$\mathbf{Vector + Scalar} = \begin{bmatrix} v_1 + x \\ v_2 + x \\ \vdots \\ v_n + x \end{bmatrix}$$
+
+#### Vector Multiplication
+
