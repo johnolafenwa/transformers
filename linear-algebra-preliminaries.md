@@ -344,6 +344,8 @@ $$C_{21} = A_{row2} . B_{column1} = [2 * 4 + 5 * 7 + 1 * 1] = [8 + 35 + 1] = 44$
 
 Therefore $$A * B = \begin{pmatrix} 57 & 85 \\ 44 & 30 \\ \end{pmatrix}$$
 
+You can compute matrix multiplication in pytorch quite easily as shown below.
+
 
 
 
