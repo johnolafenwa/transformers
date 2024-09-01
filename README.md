@@ -34,36 +34,3 @@ However, while transformers are powerful and gaining in popularity, there's stil
 
 We hope that this book will help deepen your understanding of the incredible advancements made in AI over the past years.
 
-\
-
-
-## Table of Contents
-
-{% content-ref url="sequence-modelling-with-transformer-encoder.md" %}
-[sequence-modelling-with-transformer-encoder.md](sequence-modelling-with-transformer-encoder.md)
-{% endcontent-ref %}
-
-{% content-ref url="sequence-generation-with-transformer-decoder.md" %}
-[sequence-generation-with-transformer-decoder.md](sequence-generation-with-transformer-decoder.md)
-{% endcontent-ref %}
-
-{% content-ref url="sequence-to-sequence-generation-with-transformer-encoder-decoder.md" %}
-[sequence-to-sequence-generation-with-transformer-encoder-decoder.md](sequence-to-sequence-generation-with-transformer-encoder-decoder.md)
-{% endcontent-ref %}
-
-{% content-ref url="architecture-enhancements.md" %}
-[architecture-enhancements.md](architecture-enhancements.md)
-{% endcontent-ref %}
-
-{% content-ref url="vision-transformers.md" %}
-[vision-transformers.md](vision-transformers.md)
-{% endcontent-ref %}
-
-{% content-ref url="case-studies-of-transformer-models/" %}
-[case-studies-of-transformer-models](case-studies-of-transformer-models/)
-{% endcontent-ref %}
-
-{% content-ref url="optimizing-attention.md" %}
-[optimizing-attention.md](optimizing-attention.md)
-{% endcontent-ref %}
-
