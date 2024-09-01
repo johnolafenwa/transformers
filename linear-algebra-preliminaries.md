@@ -50,13 +50,22 @@ Given that `8 bits = 1 byte`, a 16 bit float value will require a total memory o
 
 These is quite useful for computing the total memory usage of a model. For example, to calculate the memory required by an LLM with 3 billion parameters, we can do the following.
 
-Total bits = 3 `billion * 16 bit = 48 billion bits`
+Total bits = `3 billion * 16 bit = 48 billion bits`
 
 Given `8 bits = 1 byte`
 
 Total bytes = `48 billion // 8 = 6 Billion bytes = 6 GB`
 
 Therefore, a 3 billion parameter model in 16 bit precision will occupy 6 GB of memory.
+
+
+
+In pytorch, when creating a tensor, you can specify the data type as below.
+
+```python
+import torch
+weight = torch.tensor([2.5], dtype=torch.float16)
+```
 
 ### Vectors
 
@@ -82,5 +91,54 @@ shape:  torch.Size([3])
 content:  tensor([ 1.5000, -0.5000,  3.0000])
 ```
 
+### Vector Operations
 
+Below we will explore how to perform various operations with vectors
 
+#### Vector Addition
+
+You can add two vectors of the same dimension. This is done via element wise addition as seen below.
+
+```python
+import torch
+
+vector_1 = torch.tensor([1.5, -0.5, 3.0])
+vector_2 = torch.tensor([1.0, 2.0, 3.0])
+
+# vector_sum = [1.5 + 1.0, -0.5 + 2.0, 3.0 + 3.0]
+vector_sum = vector_1 + vector_2
+print("vector_sum: ", vector_sum)
+```
+
+This will output
+
+```bash
+vector_sum:  tensor([2.5000, 1.5000, 6.0000])
+```
+
+Mathematically, this can be expressed as ;
+
+Given two vectors A and B, the sum C = A + B of both vectors is computed elementwise as $$C_{i} = A_i + B_i$$. For example, `[2.0,  3.5] + [0.3, 1.0] = [2.0 + 0.3, 3.5 + 1.0] = [2.3, 4.5]`
+
+Note, you can only add two vectors to each other , their dimensions must be the same. For example, you can't add two vectors where one has 4 elements and the other has 6 elements.
+
+One exception to this is adding a scalar to a vector, you can add a scalar to a vector by simply adding the number to every single element in the vector. Example below.
+
+```python
+import torch
+# vector scalar addition
+scalar = torch.tensor([2.0])
+vector = torch.tensor([1.5, -0.5, 3.0])
+
+# vector_scalar_add = [1.5 + 2.0, -0.5 + 2.0, 3.0 + 2.0]
+vector_scalar_add = vector + scalar
+print("vector_scalar_add: ", vector_scalar_add)
+```
+
+This will output
+
+```bash
+vector_scalar_add:  tensor([3.5000, 1.5000, 5.0000])
+```
+
+As you can see from the comment in the code, we simply added the scalar to every single element in the vector.
