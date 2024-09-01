@@ -159,3 +159,44 @@ Graphically, we can represent vector scalar addition as
 
 #### Vector Multiplication
 
+We shall discuss two ways of multiplying vectors here. Dot Product which is one of the most important concepts in machine learning, as well as hadamaard product.
+
+**Dot Product**
+
+Given two vectors, A and B, the dot product is the sum of the element wise product of the two vectors, and the output is a scalar, let us illustrate it below.
+
+Given $$\mathbf{A} = \begin{bmatrix} a_1 \\ a_2 \\ \vdots \\ a_n \end{bmatrix} \quad \text{and} \quad \mathbf{B} = \begin{bmatrix} b_1 \\ b_2 \\ \vdots \\ b_n \end{bmatrix}$$
+
+The dot product denoted as $$\mathbf{A} \cdot \mathbf{B}$$ is defined as&#x20;
+
+$$\mathbf{A} \cdot \mathbf{B} = \sum_{i=1}^{n} a_i b_i = a_1 b_1 + a_2 b_2 + \cdots + a_n b_n$$
+
+
+
+We can make this more clear with an example below
+
+To compute the dot product of `[1.5, 0.6] and [2.0, 3.0]`&#x20;
+
+Sum the element wise products, `dot product = (1.5 * 2.0) + (0.6 * 3.0) = 3.0 + 1.8 = 4.8`
+
+Therefore, the dot product of  `[1.5, 0.6] and [2.0, 3.0]`  is `4.8`&#x20;
+
+We will be using the dot product considerably in this book.&#x20;
+
+You can easily compute the dot product in pytorch, below is an example.
+
+```python
+import torch
+# dot product of [1.5, 0.6] and [2.0, 3.0] 
+v1 = torch.tensor([1.5, 0.6])
+v2 = torch.tensor([2.0, 3.0])
+
+dot_product = torch.dot(v1, v2)
+print("dot_product: ", dot_product)
+```
+
+This will output
+
+```bash
+dot_product:  tensor(4.8000)
+```
