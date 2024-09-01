@@ -157,6 +157,10 @@ Graphically, we can represent vector scalar addition as
 
 &#x20;$$\mathbf{Vector + Scalar} = \begin{bmatrix} v_1 + x \\ v_2 + x \\ \vdots \\ v_n + x \end{bmatrix}$$
 
+
+
+Note, vector substraction works exactly the same as the addition.
+
 #### Vector Multiplication
 
 We shall discuss two ways of multiplying vectors here. Dot Product which is one of the most important concepts in machine learning, as well as hadamaard product.
@@ -250,3 +254,71 @@ This will output
 ```bash
 product:  tensor([7.5000, 3.0000])
 ```
+
+
+
+## Matrices
+
+A matrix is a 2 dimensional vector, most of the operations on vectors like addition and substraction works the same way with matrices.
+
+Below is an example of a 2 \* 2 matrix
+
+&#x20;$$\begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+
+
+
+A matrix is made up of rows and columns , in this example, there are two rows, `(a, b)` and `(c, d)`.
+
+There are also two columns,  `(a, c)` and `(b, d)` .
+
+Matrices are very important in neural networks in general, in fact, most of the operations in LLMs are matrix multiplications. Below we shall go through performing various operations on matrices.
+
+#### Matrix Addition
+
+Just like vectors above, this is done element wise, as shown below.&#x20;
+
+$$\begin{pmatrix} 3 & 7 \\ 2 & 5 \end{pmatrix} + \begin{pmatrix} 4 & 1 \\ 6 & 8 \end{pmatrix} = \begin{pmatrix} 3+4 & 7+1 \\ 2+6 & 5+8 \end{pmatrix} = \begin{pmatrix} 7 & 8 \\ 8 & 13 \end{pmatrix}$$
+
+
+
+Here is how to do this in pytorch
+
+```python
+matrix1 = torch.tensor([[3, 7], [2, 5]])
+matrix2 = torch.tensor([[4, 1], [6, 8]])
+
+# Perform matrix addition
+result = matrix1 + matrix2
+
+print("matrix addition: ", result)
+```
+
+The result will be this
+
+```bash
+matrix addition:  tensor([[ 7,  8],
+        [ 8, 13]])
+```
+
+
+
+You can also add a scalar to a matrix by adding it to every single element in the matrix.
+
+
+
+#### Matrix Multiplication
+
+Multiplying matrices together involves performing a number of dot product operations on the vectors that make up the matrix. Recall, a matrix is made up of rows and columns, each row is called a row vector and each column is called a column vector.
+
+For example, given the matrix $$A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}$$
+
+it has two column vectors,  $$v1 =\begin{pmatrix} a \\ c \end{pmatrix}$$ and $$v2 = \begin{pmatrix} b \\ d \end{pmatrix}$$
+
+and two column vectors, $$r1 = \begin{pmatrix} a & b \end{pmatrix}$$ and $$r2 = \begin{pmatrix} c & d \end{pmatrix}$$
+
+
+
+
+
+
+
