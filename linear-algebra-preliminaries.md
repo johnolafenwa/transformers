@@ -44,7 +44,19 @@ Scalars can be of various types, common types include the following:
 * **int16:** It is stored with 16 bits and can contain both positive and negative integers. The values of an int16 data can range from $$-2^{15}$$ to $$2^{15} - 1$$
 * **uint16 (unsigned int16):** These is same as int16 but it can only store positive integers. Its values can range from $$0$$ to $$2^{16} - 1$$
 
+When working with these datatypes, it is important to keep in mind the implications of choosing a particular data type. A general consideration is smaller precisions such as float 16, int16 require less memory and are faster to compute than the larger precisions such as float32 and float64. In terms of memory usage, you can compute the memory usage of any datatype as follows.
 
+Given that `8 bits = 1 byte`, a 16 bit float value will require a total memory of 16 `// 8 = 2 bytes` , similarly, a 64 bit float value will required a memory of `64 // 8 = 8 bytes`
+
+These is quite useful for computing the total memory usage of a model. For example, to calculate the memory required by an LLM with 3 billion parameters, we can do the following.
+
+Total bits = 3 `billion * 16 bit = 48 billion bits`
+
+Given `8 bits = 1 byte`
+
+Total bytes = `48 billion // 8 = 6 Billion bytes = 6 GB`
+
+Therefore, a 3 billion parameter model in 16 bit precision will occupy 6 GB of memory.
 
 ### Vectors
 
